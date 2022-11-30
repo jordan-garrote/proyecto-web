@@ -1,0 +1,222 @@
+<ion-content class="ion-padding colorFondo" fullscreen>
+
+  <ion-segment value="n1" mode="ios"  (ionChange)="segmentChanged($event)"   >
+ 
+    <ion-segment-button value="n1">
+      <ion-label> Jugadores  </ion-label>
+    </ion-segment-button>
+    
+    <ion-segment-button value="n3">
+      <ion-label> Categoria </ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="n4">
+      <ion-label>Bloqueo </ion-label>
+    </ion-segment-button>
+
+    <ion-segment-button value="n5">
+      <ion-label>Confirmar </ion-label>
+    </ion-segment-button>
+
+  </ion-segment>
+
+<br>
+
+<!-- INICIO DE VISTA UNNO  -->
+<ion-grid  [hidden]=div1>
+  
+    <h6>Buscar pareja </h6>
+  
+  <ion-toolbar>
+      <ion-searchbar
+      placeholder="Email o Nombre del jugador"
+      inputmode="text"
+      (ionChange)="onSherchChange($event)"
+      [debounce]="500"
+      value={{textBuscar}}
+      animated> 
+      </ion-searchbar>
+  </ion-toolbar>
+  
+  
+  <ion-list *ngFor="let forJugadores of arrayCargarJugadores2">
+    <ion-item>
+      
+      <ion-label (click)="jugadorSeleccionado2(forJugadores.id,forJugadores.nick,forJugadores.nombre,forJugadores.talla)">{{forJugadores.nombre}}</ion-label>
+    </ion-item>
+  </ion-list>
+  
+
+  <!-- CARGAR EL JUGADOR DEL INICIO DE SESSION -->
+  <ion-list   *ngFor="let forJugadores of arrayCargarJugadores">
+
+    <div  *ngIf="id_usuario == forJugadores.nick" >
+
+    <ion-text class="ion-text-center" >
+      <h1>Primer Jugador</h1>
+    </ion-text>
+  
+    <ion-item>
+      <ion-label>Nick: {{forJugadores.nick}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre: {{forJugadores.nombre}}</ion-label>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Talla: {{forJugadores.talla}}</ion-label>
+    </ion-item>
+  </div>
+  </ion-list> 
+<!-- HASTA ACA CARGAR EL JUGADOR DEL INICIO DE SESSION-->
+  
+  <!-- SELECCIONAR JUGADOR 2 -->
+  <ion-list *ngIf=" nickJudador2  != '' ">
+    <ion-text class="ion-text-center" >
+      <h1>Segundo Jugador</h1>
+    </ion-text>
+  
+    <ion-item>
+      <ion-label>Nick:{{nickJudador2}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nombre:{{nombreJugador2}}</ion-label>
+    </ion-item>
+  
+    <ion-item>
+      <ion-label>Talla:{{tallaJugador2}}</ion-label>
+      <ion-button (click)="limpiarJugador2()" expand="block" fill="clear" shape="round">
+        Borrar
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <!-- HASTA ACA SELECCIONAR JUGADOR 2-->
+
+  </ion-grid>
+      <!-- FIN DE VISTA UNNO  -->
+
+
+
+      <!-- FIN DE VISTA UNO  -->
+  <ion-grid class="input" [hidden]=div3>
+    
+  <ion-text color="primary" class="ion-text-center"> <h1>Seleccionar catagoria</h1>  </ion-text>
+
+  <div *ngIf=" idCategoriaSeleccionada  =='' ">
+
+    <ion-list  *ngFor="let fTipoDeCategoria of arrayTipoDeCategoria">
+      <ion-item >
+        <ion-label (click)="selCategoria(fTipoDeCategoria.id,fTipoDeCategoria.nombre_2)">{{fTipoDeCategoria.nombre_2}}  
+          <p>Cupos restantes {{fTipoDeCategoria.cupos_restante}}</p>  
+        </ion-label>
+       
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+  <ion-list *ngIf=" idCategoriaSeleccionada  !=''">
+    <ion-item>
+      <ion-label>Categoria Seleccionada:</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{nombreCategoriaSeleccionada}}</ion-label>   
+     </ion-item>
+     <ion-button (click)="btnLimpiarCategoria()" expand="full" >
+      Cambiar categoria
+     </ion-button>
+  </ion-list>
+
+  </ion-grid>
+      <!-- FIN DE VISTA DOS  -->
+
+
+
+
+  <!-- INICIO DE VISTA TRES-->
+<ion-grid class="input" [hidden]=div4>
+        
+  
+  <ion-list mode="ios">
+  
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col >
+          <h3>Bloques agregados</h3>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
+    <ion-item-group *ngFor="let forArrayCargarFechaDeBloqueTorneo of arrayCargarFechaDeBloqueTorneo">
+  
+      <ion-item-divider >
+        <ion-label>{{forArrayCargarFechaDeBloqueTorneo.FECHA}}</ion-label>
+      </ion-item-divider>
+      <div  *ngFor="let forCargarHorasDeBloqueTorneo of arrayCargarHorasDeBloqueTorneo">
+      <ion-item lines="none"  *ngIf="forArrayCargarFechaDeBloqueTorneo.FECHA ===forCargarHorasDeBloqueTorneo.FECHA  &&  forCargarHorasDeBloqueTorneo.estado== 0" >
+
+        <ion-label  *ngIf="arrayHorasBloqueadasParejas.indexOf(forCargarHorasDeBloqueTorneo.id) !=-1  "  class={{bloqueoDeHora}} (click)="bloquearBloque(forCargarHorasDeBloqueTorneo)">{{forCargarHorasDeBloqueTorneo.HORA}} </ion-label>
+        <ion-label    *ngIf="arrayHorasBloqueadasParejas.indexOf(forCargarHorasDeBloqueTorneo.id) ==-1  " (click)="bloquearBloque(forCargarHorasDeBloqueTorneo)">{{forCargarHorasDeBloqueTorneo.HORA}} </ion-label>
+
+      </ion-item>
+    </div>
+    
+  
+    </ion-item-group>
+  </ion-list>
+    
+  </ion-grid>
+  <!-- FIN DE VISTA TRES-->
+
+
+
+  <!-- vista 4 CONFIMACION -->
+<ion-item-group class="input" mode="ios" [hidden]=div5>
+
+
+  <ion-item-divider>
+    <ion-label>Torneo: </ion-label>
+  </ion-item-divider>
+
+  <ion-item>
+    <ion-label >Codigo de Torneo : {{idTorneo}}</ion-label>
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label >Pareja:</ion-label>
+  </ion-item-divider>
+
+  <ion-item lines="none">
+    <ion-label>Jugador 1 :  {{id_usuario}}</ion-label>
+  </ion-item>
+  <ion-item lines="none">
+    <ion-label>Jugador 2 :  {{nombreJugador2}}</ion-label>
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label>Categoria:</ion-label>
+  </ion-item-divider>
+
+  <ion-item lines="none">
+    <ion-label >Categoria: {{nombreCategoriaSeleccionada}}</ion-label>
+  </ion-item>
+
+  <ion-item-divider>
+    <ion-label>Confimar:</ion-label>
+  </ion-item-divider>
+
+
+  <ion-item lines="none">
+    <ion-button (click)="btnAgregarParejaTorneo()" expand="block">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Agregar Pareja
+    </ion-button>
+  </ion-item>
+
+
+</ion-item-group>
+
+
+
+<!-- fin vista 4 -->
+  </ion-content>

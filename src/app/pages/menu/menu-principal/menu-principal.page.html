@@ -1,0 +1,48 @@
+<ion-content>
+  <!-- <div class="hero" style="background-image: url('/assets/img/galan.jpg'); "> </div> -->
+  <img  class="imagen_principal_menu" src="assets/imagenes/LogoPF.jpeg"  >
+
+  <br><br><br>
+  <div class="header ion-padding">
+    <ion-grid>
+      <ion-row class="ion-no-margin ion-no-padding">
+        <ion-col class="ion-no-margin ion-no-padding" size="9">
+          <h1>Padel Fixture </h1>
+          <p>{{mail_usuario}}</p>
+        </ion-col>
+        <ion-col size="3">
+          <div class="follow-banner">Menu </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ion-grid class="action-panel">
+    <ion-row>
+      <ion-col>
+        <ion-icon color="secondary" size="large"  [routerLink]="['/buscar-torneos']" name="search-outline"></ion-icon>
+        <p>Buscar torneo</p>
+      </ion-col>
+      <ion-col>
+        <ion-icon color="secondary" size="large"  [routerLink]="['/perfil-club']"  name="folder-open-outline"></ion-icon>
+        <p>Mis torneos </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-margin-top">
+      <ion-col>
+        <ion-icon color="secondary" size="large"  [routerLink]="['/mis-torneos']" name="storefront-outline"></ion-icon>
+        <p>Tiendas</p>
+      </ion-col>
+      <ion-col>
+        <ion-icon color="secondary" size="large"   [routerLink]="['/mis-americanos']" name="person-outline"></ion-icon>
+        <p>Perfil</p>
+      </ion-col>
+      <ion-col>
+        <ion-icon color="secondary" size="large"  name="ribbon-outline"></ion-icon>
+        <p>Ranking  </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>

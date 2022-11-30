@@ -1,0 +1,31 @@
+.colorFondo {
+    --background: var(--ion-color-softlight);
+  }
+  
+.input {
+    background-color: white;
+    padding-top: 15px;
+    padding-bottom: 40px;
+    border-radius: 40px;
+    padding-left: 12px;
+    padding-right: 32px;
+}
+
+.imagenPrincipal{
+    max-width: auto;
+     max-height: auto;
+     display: block;
+     margin: auto;
+     width: 50%;
+     border-radius: 50%;
+}
+
+.image-container {
+    border-top-right-radius: 80px !important;
+    border-bottom-right-radius: 80px !important;
+    background-repeat: none;
+    background-size: cover;
+    background-position: center;
+    height: 210px;
+    width: 100%;
+  }

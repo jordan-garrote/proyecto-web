@@ -1,0 +1,353 @@
+
+
+<ion-content>
+
+  <div  *ngFor="let post of arrayTorneos">
+    <ion-grid class="ion-no-margin" class="post-bordered-image">
+      <ion-row >
+        <ion-col class="ion-no-padding">
+          <ion-text class="ion-text-center" ><h1>{{post.descripcion}}</h1></ion-text>
+          
+
+         <img class="image-container" src="data:image/png;base64,{{post.image}}"> 
+
+        </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col>
+          <ion-text class="ion-text-center" ><h1>DESCRIPCION</h1></ion-text>
+
+          <ion-item >
+            <ion-label>Club: {{post.club}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Nombre torneo: {{post.descripcion}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Region: {{post.region}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Comuna: {{post.comuna}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Fecha: {{post.fecha_desde}}  a {{post.fecha_hasta}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Precio: {{post.precio}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Tipo pago: {{post.tipo_pago}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Compartir torneo</ion-label>
+              <ion-button expand="block" fill="outline" color="transparent" size="6px" (click)="shareAppCompartir()" > 
+                <ion-icon name="share-social-outline"></ion-icon>  
+              </ion-button>
+          </ion-item>
+
+
+        <!-- C A T E G O R I A  -->
+          <ion-text class="ion-text-center" ><h1>Categorias</h1></ion-text>
+          
+          <ion-list *ngFor="let FarrayCategoriaTorneo of arrayCategoriaTorneo">
+            <ion-item>
+              <ion-label (click)="setOpen(true,FarrayCategoriaTorneo.id)" >{{FarrayCategoriaTorneo.nombre_2}}</ion-label>
+            </ion-item>
+          </ion-list>
+
+
+          <ion-modal [isOpen]="isModalOpen">
+            <ng-template>
+              <ion-header>
+                <ion-toolbar>
+                  <ion-title>Fixture </ion-title>
+                  <ion-buttons slot="end">
+                    <ion-button (click)="setOpen(false)">Cerrar</ion-button>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-header>
+              <ion-content class="ion-padding">
+                
+                
+                <ion-header>
+                  <ion-toolbar>
+                    <ion-segment value="Partidos" (ionChange)="segmentChanged($event)" >
+
+                      <ion-segment-button value="n1">
+                        Partidos
+                      </ion-segment-button>
+
+                      <ion-segment-button value="n2">
+                        Clasificación
+                      </ion-segment-button>
+
+                      <ion-segment-button value="n3">
+                        Playoffs
+                      </ion-segment-button>
+
+                    </ion-segment>
+                  </ion-toolbar>
+                </ion-header>
+
+
+                <p>
+
+                  <ion-item-group  mode="ios" [hidden]=div1>
+
+
+                  <ion-list *ngFor="let FarrayMostrarGetFixture of arrayMostrarGetFixture; let i=index">
+
+                    <ion-list>
+                      <ion-item-group>
+                        <ion-item-divider>
+                          <ion-label>
+                            Partido N°{{i+1}} Fecha: {{FarrayMostrarGetFixture.fecha}} Hora: {{FarrayMostrarGetFixture.hora}}
+                          </ion-label>
+                        </ion-item-divider>
+                    
+                        <ion-item lines="none">
+                          <ion-grid>
+                            <ion-row>
+                              <ion-col size="6" class="ion-text-left">{{FarrayMostrarGetFixture.jugador1P1}}</ion-col>
+                              <ion-col size="6" class="ion-text-right">{{FarrayMostrarGetFixture.jugador1P2}}</ion-col>
+                            </ion-row>
+                          </ion-grid> 
+
+                        </ion-item>
+                        <ion-item lines="none">
+                          <ion-grid>
+                            <ion-row>
+                              <ion-col size="4" class="ion-text-left">{{FarrayMostrarGetFixture.categoria}}</ion-col>
+                              <ion-col size="4" class="ion-text-center"> V/S</ion-col>
+                              <ion-col size="4" class="ion-text-right">Grupo: {{FarrayMostrarGetFixture.grupo}}</ion-col>                          
+                              </ion-row>
+                          </ion-grid>                         
+                        </ion-item>
+                      
+                        <ion-item >
+                          <ion-grid>
+                            <ion-row>
+                              <ion-col size="6" class="ion-text-left">{{FarrayMostrarGetFixture.jugador2P1}}</ion-col>
+                              <ion-col size="6" class="ion-text-right">{{FarrayMostrarGetFixture.jugador2P2}}</ion-col>
+                            </ion-row>
+                          </ion-grid>                        
+                        </ion-item>
+                      </ion-item-group>
+          
+                    </ion-list>
+                  </ion-list>
+                </ion-item-group>
+
+
+
+
+
+
+
+
+
+
+                <ion-item-group  mode="ios" [hidden]=div2>
+
+
+                  
+                  <ion-item-group *ngFor="let FarrayGrupo of arrayGrupo ">
+                  
+                    <ion-item-divider>
+                      <ion-label >Grupo: {{FarrayGrupo}} </ion-label>
+                    </ion-item-divider>
+
+
+                  <ion-row style="border-bottom: groove;">
+
+                  <ion-col col-4>
+                     <ion-label >-</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >Pts.</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >J</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >G</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >P</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >SF</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >SC</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >DIF</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >DIF-G</ion-label>
+                  </ion-col>
+                </ion-row>
+
+                
+
+             
+
+              
+                <div *ngFor="let FarrayMostrarClasificacionFiltrado of arrayMostrarClasificacionFiltrado; let i=index" >
+
+                  <div   *ngIf="FarrayGrupo == FarrayMostrarClasificacionFiltrado.grupo  " >
+                  <ion-row>
+                    <ion-col size="12">
+                          <small>{{FarrayMostrarClasificacionFiltrado.pareja}}</small>
+                    </ion-col>
+                  </ion-row>
+                <ion-row     style="border-bottom: groove;">
+                    <ion-col col-4>
+                    <ion-label class="ion-text-center">Puntos</ion-label>
+                  </ion-col>         
+                  <ion-col col-4>
+                    <ion-label >{{FarrayMostrarClasificacionFiltrado.PTS}}</ion-label>
+                  </ion-col>
+                    <ion-col col-4>
+                    <ion-label >{{FarrayMostrarClasificacionFiltrado.J}}</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >{{FarrayMostrarClasificacionFiltrado.G}}</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >{{FarrayMostrarClasificacionFiltrado.P}}</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >{{FarrayMostrarClasificacionFiltrado.SF}}</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >{{FarrayMostrarClasificacionFiltrado.SC}}</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >{{FarrayMostrarClasificacionFiltrado.Dif}}</ion-label>
+                  </ion-col>
+                  <ion-col col-4>
+                    <ion-label >{{FarrayMostrarClasificacionFiltrado.DIFG}}</ion-label>
+                  </ion-col>
+
+                </ion-row>
+
+
+              </div>
+            </div>
+              </ion-item-group>
+            </ion-item-group>
+
+
+
+
+
+
+
+
+              <ion-item-group *ngFor="let FarrayGrupo of arrayGrupo ">
+  
+                <ion-item-divider>
+                  <ion-label >{{FarrayGrupo}} </ion-label>
+                </ion-item-divider>
+
+            <div *ngFor="let farrayMostrarClasificacionFiltrado of arrayMostrarClasificacionFiltrado ">
+              
+              <ion-item lines="none"  *ngIf="FarrayGrupo == farrayMostrarClasificacionFiltrado.grupo " >
+
+                <ion-label >{{farrayMostrarClasificacionFiltrado.pareja}} </ion-label>
+
+              </ion-item>
+            </div>
+              </ion-item-group>
+
+
+
+
+
+
+
+              <!-- //VENTA 3 -->
+              <ion-item-group  mode="ios" [hidden]=div3>
+
+
+
+
+
+                
+             </ion-item-group>
+
+
+
+
+                </p>
+              </ion-content>
+            </ng-template>
+          </ion-modal>
+
+
+
+
+          <!-- C O N T A C T O -->
+          <ion-text class="ion-text-center" ><h1>CONTACTO</h1></ion-text>
+
+          <ion-item >
+            <ion-label>Nombre contacto: {{post.nombreContacto}}</ion-label>
+          </ion-item>
+
+          <ion-item >
+            <ion-label>Celular / Whatapp: {{post.ws}}</ion-label>
+            <ion-button class="lbl4"  fill="outline" href="https://api.whatsapp.com/send?phone=56977758707&fbclid=IwAR0YJvL8J67fbfdHDAa7f8Da1fy7W7Hiiz42g2pSrRyTyPGYzWuEvAHeqzM"> 
+              <ion-icon name="logo-whatsapp"></ion-icon>
+              
+             </ion-button>
+        
+          </ion-item>
+          <ion-item >
+            <ion-label>Correo: {{post.correo}}</ion-label>
+          </ion-item>
+
+          <ion-text class="ion-text-center" ><h1>PAGO</h1></ion-text>
+
+
+          <ion-item >
+            <ion-label>banco: {{post.banco}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Nombre Cuenta: {{post.nombreCuenta}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Rut: {{post.rut}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Cuenta: {{post.cuenta}}</ion-label>
+          </ion-item>
+          <ion-item >
+            <ion-label>Tipo cuenta: {{post.tipo_cuenta}}</ion-label>
+          </ion-item>
+
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+<ion-grid >
+  <ion-row>
+
+    <ion-col size="4">
+      <ion-button  [routerLink]="['/buscar-torneos']"  fill="outline" >
+        VOLVER
+    </ion-button>
+   </ion-col>
+
+    <ion-col size="8">
+      <ion-button (click)="btnInscripcion()"  fill="outline" >
+      CONTINUAR INSCRIPCION
+    </ion-button>
+  </ion-col>
+
+  </ion-row>
+</ion-grid>
+
+</ion-content>

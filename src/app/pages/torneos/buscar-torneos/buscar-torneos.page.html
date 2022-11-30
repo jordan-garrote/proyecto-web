@@ -1,0 +1,37 @@
+<!-- <app-heder-basico titulo="Mis torneos"> </app-heder-basico> -->
+
+<ion-content class="ion-padding colorFondo" fullscreen>
+
+
+
+  <div  *ngFor="let post of arrayTorneos">
+    <ion-grid class="ion-no-margin" class="post-bordered-image">
+      <ion-row >
+        <ion-col class="ion-no-padding">
+
+          <div class="image-container" (click)="selecTorneo(post.id)"  >
+
+            <!-- <img class="image-container" [src]="picImage" > -->
+
+         <img class="image-container" src="data:image/png;base64,{{post.image}}"> 
+
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="author-row ">
+        <ion-col>
+          <ion-item class="ion-margin-left ion-padding-left colorFondo" lines="none">
+            <ion-avatar slot="start">
+              <ion-img [src]=post.logoClubMini></ion-img>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{post.nombreClub}}</h2>
+              <p >Fecha {{post.fecha}}  -  Comuna  {{post.comuna}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

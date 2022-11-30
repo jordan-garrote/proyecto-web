@@ -1,0 +1,59 @@
+
+
+<ion-content class="ion-padding">
+
+  <br>
+
+<ion-text color="primary" class="ion-text-center">
+  <h1>Recuperar su clave</h1>
+  <h6>Completar</h6>
+</ion-text>
+
+
+
+
+<form #formulario="ngForm">
+
+<ion-list-header>
+  <ion-label>Formulario valido: {{formulario.valid}} </ion-label>
+</ion-list-header>
+
+<ion-item>
+  <ion-label>Email:</ion-label>
+  <ion-input type="email" 
+             placeholder="Completar Email"
+             name="email"
+             [(ngModel)]="recuperar_clave"
+             pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+             required></ion-input>
+</ion-item>
+
+<br>
+
+
+<ion-button color="secondary" 
+              [routerLink]="['/login']" 
+              shape="round">
+              Volver
+</ion-button>
+
+
+<ion-button type="submit"
+            [disabled]="formulario.invalid"
+            (click)="btnRecuperar_clave()" 
+            shape="round">
+            Recuperar password
+</ion-button>
+
+</form>
+
+
+
+
+
+
+
+
+
+  
+</ion-content>

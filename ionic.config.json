@@ -1,0 +1,7 @@
+{
+  "name": "PadelFixtureUser",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
