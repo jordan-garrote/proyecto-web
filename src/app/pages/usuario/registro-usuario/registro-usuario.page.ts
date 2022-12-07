@@ -7,23 +7,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistroUsuarioPage implements OnInit {
 
-  nombre: string = "";
-  apellido: string = "";
-  edad: string = "";
-  ciudad:string = "";
-  fono:string = "";
+  nombre_apellido: string = "";
+  fecha_nacimiento: string = "";
+  categoria: string = "";
+  nacionalidad:string = "";
+  lado:string = "";
+  talla:string = "";
+  genero:string = "";
+  instagram:string = "";
+  whatsApp:string = "";
+
   mail:string = "";
   contrasena:string ="";
 
 
+  
   usuario_registro = {
-    nombre:"",
-    apellido:"",
-    edad:"",
-    ciudad:"",
-    fono:"",
-    email:"",
-    contrasena:""
+    nombre_apellido:"",
+    fecha_nacimiento:"",
+    categoria:"",
+    nacionalidad:"",
+    lado:"",
+    talla:"",
+    genero:"",
+    instagram:"",
+    whatsApp:"",
+    mail:"",
+    contrasena:"",
   }
 
   constructor() { }

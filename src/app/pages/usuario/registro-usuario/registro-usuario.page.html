@@ -15,51 +15,91 @@
     </ion-list-header>
     
     <ion-item>
-      <ion-label>Nombre</ion-label>
+      <ion-label>Nombre apellido </ion-label>
       <ion-input type="text" 
                  placeholder="Completar"
                  name="nombre"
-                 [(ngModel)]="usuario_registro.nombre"
+                 [(ngModel)]="usuario_registro.nombre_apellido"
                  required>
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Apellido</ion-label>
+      <ion-label>Fecha de Nacimiento</ion-label>
       <ion-input type="text" 
                  placeholder="Completar"
                  name="apellido"
-                 [(ngModel)]="usuario_registro.apellido"
+                 [(ngModel)]="usuario_registro.fecha_nacimiento"
                  required>
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Edad</ion-label>
+      <ion-label>Categoria</ion-label>
       <ion-input type="text" 
                  placeholder="Completar"
                  name="edad"
-                 [(ngModel)]="usuario_registro.edad"
+                 [(ngModel)]="usuario_registro.categoria"
                  required>
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Ciudad</ion-label>
+      <ion-label>Nacionalidad</ion-label>
       <ion-input type="text" 
                  placeholder="Completar"
                  name="ciudad"
-                 [(ngModel)]="usuario_registro.ciudad"
+                 [(ngModel)]="usuario_registro.nacionalidad"
                  required>
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Fono</ion-label>
+      <ion-label>Lado</ion-label>
       <ion-input type="tel" 
                  placeholder="Completar"
                  name="fono"
-                 [(ngModel)]="usuario_registro.fono"
+                 [(ngModel)]="usuario_registro.lado"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Talla</ion-label>
+      <ion-input type="tel" 
+                 placeholder="Completar"
+                 name="fono"
+                 [(ngModel)]="usuario_registro.talla"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Genero</ion-label>
+      <ion-input type="tel" 
+                 placeholder="Completar"
+                 name="fono"
+                 [(ngModel)]="usuario_registro.genero"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Instagram</ion-label>
+      <ion-input type="tel" 
+                 placeholder="Completar"
+                 name="fono"
+                 [(ngModel)]="usuario_registro.instagram"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>WhatsApp</ion-label>
+      <ion-input type="tel" 
+                 placeholder="Completar"
+                 name="fono"
+                 [(ngModel)]="usuario_registro.whatsApp"
                  required>
       </ion-input>
     </ion-item>
@@ -69,7 +109,7 @@
       <ion-input type="email" 
                  placeholder="Completar Email"
                  name="email"
-                 [(ngModel)]="usuario_registro.email"
+                 [(ngModel)]="usuario_registro.mail"
                  pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                  required></ion-input>
     </ion-item>

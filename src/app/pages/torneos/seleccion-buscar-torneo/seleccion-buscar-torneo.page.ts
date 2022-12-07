@@ -17,6 +17,15 @@ export class SeleccionBuscarTorneoPage implements OnInit {
   var_grupo=0;
   var_grupoArray: any = [];
 
+  //redes sociales
+  numeroW = "";
+  titulo_compartir = "";
+  texto_compartir = "";
+  url_compartir = "";
+
+
+
+
 
   id_torneo="";
   id_usuario
@@ -93,7 +102,23 @@ export class SeleccionBuscarTorneoPage implements OnInit {
         })
         
         this.arrayTorneos =response.data.data;
-     //   console.log('response SeleccionBuscarTorneoPage', response.data.data)
+
+        //traer el numero y cortar el +
+        const numeroWh = this.arrayTorneos[0].ws;
+        this.numeroW =  numeroWh.slice(1);
+
+        this.titulo_compartir = "Torneo en " + this.arrayTorneos[0].club;
+        this.texto_compartir = "Busca el torneo en la aplicacion Padel fixture con el nombre: " + this.arrayTorneos[0].descripcion;
+        this.url_compartir = "https://play.google.com/store/apps/details?id=com.padelmanager.padelmanager&hl=es";
+
+
+
+
+
+        //console.log('response SeleccionBuscarTorneoPage', response.data.data)
+        console.log(this.arrayTorneos[0].ws)
+        console.log(this.arrayTorneos[0]);
+        //console.log(this.numeroW)
       }
 
 
@@ -172,18 +197,21 @@ export class SeleccionBuscarTorneoPage implements OnInit {
   shareAppCompartir(){
 
     Share.share({
-     title: 'Comparte Padel Fixture',
-     text: 'Descarga Padel Fixture',
-     url: 'https://play.google.com/store/apps/details?id=com.padelmanager.padelmanager&hl=es',
-     // dialogTitle: 'Share with buddies',
+     title: this.titulo_compartir,
+     text: this.texto_compartir,
+     url: this.url_compartir,
+      //dialogTitle: 'Share with buddies',
    });
  }
- ayudaWhatsapp(){
-   codePais :"569";
-   numeroWhatsapp : "84714590";
-   url: "https://wa.me/"+this.codePais +this.numeroWhatsapp+"?text=hi";
+
+
+//parece q este no se ocupa
+//  ayudaWhatsapp(){
+//    codePais :"569";
+//    numeroWhatsapp : "84714590";
+//    url: "https://wa.me/"+this.codePais +this.numeroWhatsapp+"?text=hi";
    
- }
+//  }
 
 
 

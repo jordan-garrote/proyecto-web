@@ -82,7 +82,7 @@
                       </ion-segment-button>
 
                       <ion-segment-button value="n3">
-                        Playoffs carlos
+                        Playoffs
                       </ion-segment-button>
 
                     </ion-segment>
@@ -204,7 +204,7 @@
                   </ion-row>
                 <ion-row     style="border-bottom: groove;">
                     <ion-col col-4>
-                    <ion-label class="ion-text-center">Puntos</ion-label>
+                    <ion-label class="ion-text-center"></ion-label>
                   </ion-col>         
                   <ion-col col-4>
                     <ion-label >{{FarrayMostrarClasificacionFiltrado.PTS}}</ion-label>
@@ -245,8 +245,8 @@
 
 
 
-
-              <ion-item-group *ngFor="let FarrayGrupo of arrayGrupo ">
+<!-- PROBANDO LOS ARRAY DE IVAN -->
+              <!-- <ion-item-group *ngFor="let FarrayGrupo of arrayGrupo ">
   
                 <ion-item-divider>
                   <ion-label >{{FarrayGrupo}} </ion-label>
@@ -260,7 +260,7 @@
 
               </ion-item>
             </div>
-              </ion-item-group>
+              </ion-item-group> -->
 
 
 
@@ -298,7 +298,7 @@
 
           <ion-item >
             <ion-label>Celular / Whatapp: {{post.ws}}</ion-label>
-            <ion-button class="lbl4"  fill="outline" href="https://api.whatsapp.com/send?phone=56977758707&fbclid=IwAR0YJvL8J67fbfdHDAa7f8Da1fy7W7Hiiz42g2pSrRyTyPGYzWuEvAHeqzM"> 
+            <ion-button class="lbl4"  fill="outline" href="https://api.whatsapp.com/send?phone={{numeroW}}&fbclid=IwAR0YJvL8J67fbfdHDAa7f8Da1fy7W7Hiiz42g2pSrRyTyPGYzWuEvAHeqzM"> 
               <ion-icon name="logo-whatsapp"></ion-icon>
               
              </ion-button>
