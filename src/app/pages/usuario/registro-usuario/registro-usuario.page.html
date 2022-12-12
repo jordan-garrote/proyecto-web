@@ -35,16 +35,52 @@
     </ion-item>
 
     <ion-item>
+      <ion-label>Seleccionar fecha del torneo:</ion-label>
+      <ion-button (click)="presentAlertTimeVreacionDeTorneo()">
+      <ion-icon slot="icon-only" name="time-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Fecha de nacimiento: {{textFechaInicio}}</ion-label>
+    </ion-item>
+
+
+
+    <ion-item lines="none">
+      <ion-label>Categoria</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selCategoria($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+
+    <!-- <ion-item>
       <ion-label>Categoria</ion-label>
       <ion-input type="text" 
                  placeholder="Completar"
                  name="edad"
-                 [(ngModel)]="usuario_registro.categoria"
+                 
                  required>
       </ion-input>
+    </ion-item> -->
+
+    <ion-item lines="none">
+      <ion-label>Nacionalidad</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selNacionalidad($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+      </ion-select>
     </ion-item>
 
-    <ion-item>
+
+    <!-- <ion-item>
       <ion-label>Nacionalidad</ion-label>
       <ion-input type="text" 
                  placeholder="Completar"
@@ -52,9 +88,22 @@
                  [(ngModel)]="usuario_registro.nacionalidad"
                  required>
       </ion-input>
+    </ion-item> -->
+
+
+    <ion-item lines="none">
+      <ion-label>Lado</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selLado($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+      </ion-select>
     </ion-item>
 
-    <ion-item>
+
+
+    <!-- <ion-item>
       <ion-label>Lado</ion-label>
       <ion-input type="tel" 
                  placeholder="Completar"
@@ -62,9 +111,20 @@
                  [(ngModel)]="usuario_registro.lado"
                  required>
       </ion-input>
+    </ion-item> -->
+
+    <ion-item lines="none">
+      <ion-label>Talla</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selTalla($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+      </ion-select>
     </ion-item>
 
-    <ion-item>
+
+    <!-- <ion-item>
       <ion-label>Talla</ion-label>
       <ion-input type="tel" 
                  placeholder="Completar"
@@ -72,9 +132,21 @@
                  [(ngModel)]="usuario_registro.talla"
                  required>
       </ion-input>
+    </ion-item> -->
+
+
+    <ion-item lines="none">
+      <ion-label>Genero</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selGenero($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+      </ion-select>
     </ion-item>
 
-    <ion-item>
+
+    <!-- <ion-item>
       <ion-label>Genero</ion-label>
       <ion-input type="tel" 
                  placeholder="Completar"
@@ -82,7 +154,7 @@
                  [(ngModel)]="usuario_registro.genero"
                  required>
       </ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-item>
       <ion-label>Instagram</ion-label>
@@ -131,7 +203,7 @@
                 (click)="btn_guardar_usuario()" 
                 expand="block"
                 shape="round">
-      Login
+      Guardar
     </ion-button>
     
   
@@ -155,7 +227,7 @@
         </ion-col>
 
         <ion-col size="6">
-          <ion-button color="secondary" size="large" >Guardar</ion-button>
+          <ion-button color="secondary" size="large" (click)="btn_guardar_usuario()" >Crear</ion-button>
         </ion-col>
 
       </ion-row>
