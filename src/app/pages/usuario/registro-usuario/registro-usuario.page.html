@@ -75,7 +75,7 @@
     <ion-item margin-top >
       <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selNacionalidad($event)">
         <ion-select-option>Seleccionar</ion-select-option>
-        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeNacionalidad of arrayTipoDeNacionalidad" [value]="FarrayTipoDeNacionalidad.id" >{{FarrayTipoDeNacionalidad.descripcion}}</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -97,7 +97,7 @@
     <ion-item margin-top >
       <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selLado($event)">
         <ion-select-option>Seleccionar</ion-select-option>
-        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+        <ion-select-option *ngFor="let farrayTipoDeLado of arrayTipoDeLado" [value]="farrayTipoDeLado.id" >{{farrayTipoDeLado.descripcion}}</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -119,7 +119,7 @@
     <ion-item margin-top >
       <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selTalla($event)">
         <ion-select-option>Seleccionar</ion-select-option>
-        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+        <ion-select-option *ngFor="let farrayTipoDeTalla of arrayTipoDeTalla" [value]="farrayTipoDeTalla.id" >{{farrayTipoDeTalla.descripcion}}</ion-select-option>
       </ion-select>
     </ion-item>
 
@@ -141,7 +141,7 @@
     <ion-item margin-top >
       <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selGenero($event)">
         <ion-select-option>Seleccionar</ion-select-option>
-        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeGenero of arrayTipoDeGenero" [value]="FarrayTipoDeGenero.id" >{{FarrayTipoDeGenero.descripcion}}</ion-select-option>
       </ion-select>
     </ion-item>
 
