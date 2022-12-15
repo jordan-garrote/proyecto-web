@@ -15,8 +15,8 @@
     </ion-list-header>
     
     <ion-item>
-      <ion-label>Nombre apellido </ion-label>
-      <ion-input type="text" 
+      <ion-label>Nombre apellido: </ion-label>
+      <ion-input type="name" 
                  placeholder="Completar"
                  name="nombre"
                  [(ngModel)]="usuario_registro.nombre_apellido"
@@ -25,25 +25,20 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Fecha de Nacimiento</ion-label>
+      <ion-label>Fecha de Nacimiento </ion-label>
+      <ion-button (click)="presentAlertTimeVreacionDeTorneo()">
+      <ion-icon slot="icon-only" name="time-outline"></ion-icon>
+      </ion-button>
+
+
       <ion-input type="text" 
                  placeholder="Completar"
-                 name="apellido"
+                 name="cumpleanos"
                  [(ngModel)]="usuario_registro.fecha_nacimiento"
                  required>
       </ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Seleccionar fecha del torneo:</ion-label>
-      <ion-button (click)="presentAlertTimeVreacionDeTorneo()">
-      <ion-icon slot="icon-only" name="time-outline"></ion-icon>
-      </ion-button>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Fecha de nacimiento: {{textFechaInicio}}</ion-label>
-    </ion-item>
 
 
 
@@ -59,15 +54,7 @@
 
 
 
-    <!-- <ion-item>
-      <ion-label>Categoria</ion-label>
-      <ion-input type="text" 
-                 placeholder="Completar"
-                 name="edad"
-                 
-                 required>
-      </ion-input>
-    </ion-item> -->
+
 
     <ion-item lines="none">
       <ion-label>Nacionalidad</ion-label>
@@ -80,15 +67,6 @@
     </ion-item>
 
 
-    <!-- <ion-item>
-      <ion-label>Nacionalidad</ion-label>
-      <ion-input type="text" 
-                 placeholder="Completar"
-                 name="ciudad"
-                 [(ngModel)]="usuario_registro.nacionalidad"
-                 required>
-      </ion-input>
-    </ion-item> -->
 
 
     <ion-item lines="none">
@@ -103,15 +81,7 @@
 
 
 
-    <!-- <ion-item>
-      <ion-label>Lado</ion-label>
-      <ion-input type="tel" 
-                 placeholder="Completar"
-                 name="fono"
-                 [(ngModel)]="usuario_registro.lado"
-                 required>
-      </ion-input>
-    </ion-item> -->
+
 
     <ion-item lines="none">
       <ion-label>Talla</ion-label>
@@ -124,15 +94,7 @@
     </ion-item>
 
 
-    <!-- <ion-item>
-      <ion-label>Talla</ion-label>
-      <ion-input type="tel" 
-                 placeholder="Completar"
-                 name="fono"
-                 [(ngModel)]="usuario_registro.talla"
-                 required>
-      </ion-input>
-    </ion-item> -->
+
 
 
     <ion-item lines="none">
@@ -146,18 +108,10 @@
     </ion-item>
 
 
-    <!-- <ion-item>
-      <ion-label>Genero</ion-label>
-      <ion-input type="tel" 
-                 placeholder="Completar"
-                 name="fono"
-                 [(ngModel)]="usuario_registro.genero"
-                 required>
-      </ion-input>
-    </ion-item> -->
+
 
     <ion-item>
-      <ion-label>Instagram</ion-label>
+      <ion-label>Instagram:</ion-label>
       <ion-input type="tel" 
                  placeholder="Completar"
                  name="fono"
@@ -167,7 +121,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>WhatsApp</ion-label>
+      <ion-label>WhatsApp:</ion-label>
       <ion-input type="tel" 
                  placeholder="Completar"
                  name="fono"

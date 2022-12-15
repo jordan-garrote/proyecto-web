@@ -107,7 +107,7 @@ async cargarTipoDeCategoria() {
   const response = await this.httpService.callSP({
     SP: "get_tipo_categoria",
     FILTERS: {
-        _TIPO : "get_tipo_categoria"
+        
     }
   })
   
@@ -125,7 +125,6 @@ async cargarTipoDeNacionalidad() {
   })
   console.log("cargarTipoDeNacionalidad ",response);
   this.arrayTipoDeNacionalidad=response.data.data;
-  console.log("get_tipo_categoria ",this.arrayTipoDeNacionalidad);
 }
 
 //CARGAR LADO 
@@ -138,7 +137,6 @@ async cargarTipoDeLado() {
   })
   console.log("arrayTipoDeLado ",response);
   this.arrayTipoDeLado=response.data.data;
-  console.log("arrayTipoDeLado ",this.arrayTipoDeLado);
 }
 
 //CARGAR TALLA 
@@ -151,7 +149,6 @@ async cargarTipoDeTalla() {
   })
   console.log("cargarTipoDeTalla ",response);
   this.arrayTipoDeTalla=response.data.data;
-  console.log("cargarTipoDeTalla ",this.arrayTipoDeTalla);
 }
 
 //CARGAR genero 
@@ -164,7 +161,6 @@ async cargarTipoDeGenero() {
   })
   console.log("arrayTipoDeGenero ",response);
   this.arrayTipoDeGenero=response.data.data;
-  console.log("arrayTipoDeGenero ",this.arrayTipoDeGenero);
 }
 
 
@@ -177,7 +173,7 @@ async cargarTipoDeGenero() {
 
   btn_guardar_usuario()
   {
-    console.log(this.usuario_registro, this.categoria);
+    console.log(this.usuario_registro);
     console.log();
   }
 
@@ -225,31 +221,37 @@ async presentAlertTimeVreacionDeTorneo() {
           console.log(resultData.values.Popfecha_nacimiento);
 
 
-          this.fecha_nacimiento=this.cambiarFormatoFecha(resultData.values.Popfecha_nacimiento);
-          console.log("this.fecha_nacimiento", this.fecha_nacimiento);
+          this.usuario_registro.fecha_nacimiento =this.cambiarFormatoFecha(resultData.values.Popfecha_nacimiento);
+
+          console.log("this.fecha_nacimiento", this.usuario_registro.fecha_nacimiento);
 
 
 }
 
   selCategoria(valorSelect)
   {
-    console.log(valorSelect.detail.value);
+    this.usuario_registro.categoria = valorSelect.detail.value;
+    // console.log(valorSelect.detail.value);
   }
   selNacionalidad(valorSelect)
   {
-    console.log(valorSelect.detail.value);
+    this.usuario_registro.nacionalidad = valorSelect.detail.value;
+    // // console.log(valorSelect.detail.value);
   }
   selLado(valorSelect)
   {
-    console.log(valorSelect.detail.value);
+    this.usuario_registro.lado = valorSelect.detail.value;
+    // console.log(valorSelect.detail.value);
   }
   selTalla(valorSelect)
   {
-    console.log(valorSelect.detail.value);
+    this.usuario_registro.talla = valorSelect.detail.value;
+    // console.log(valorSelect.detail.value);
   }
   selGenero(valorSelect)
   {
-    console.log(valorSelect.detail.value);
+    this.usuario_registro.genero = valorSelect.detail.value;
+    // console.log(valorSelect.detail.value);
   }
 
 
