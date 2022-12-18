@@ -18,7 +18,7 @@
         type="email"
         placeholder="Completar Email"
         name="email"
-        [(ngModel)]="usuario.email_usuario"
+        [(ngModel)]="usuario.email"
         pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
         required
       ></ion-input>
@@ -38,7 +38,7 @@
     <br /><br />
     <ion-button
       [disabled]="formulario.invalid"
-      (click)="btnLogin(usuario.email_usuario)"
+      (click)="onSingIn()"
       expand="block"
       shape="round"
     >
@@ -46,7 +46,7 @@
     </ion-button>
 
     <ion-button
-      (click)="singIn()"
+      (click)="onSingInGoogle()"
       expand="block"
       shape="round"
     >

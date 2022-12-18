@@ -1,48 +1,105 @@
-<ion-content>
-  <!-- <div class="hero" style="background-image: url('/assets/img/galan.jpg'); "> </div> -->
-  <img  class="imagen_principal_menu" src="assets/imagenes/LogoPF.jpeg"  >
+<ion-menu menuId="main-menu" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-item
+        *ngFor="let item of menuList; let i = index"
+        [attr.data-index]="i"
+        (click)="goTo(item.value)"
+    >
+      {{ item.text }}
+    </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-  <br><br><br>
-  <div class="header ion-padding">
-    <ion-grid>
-      <ion-row class="ion-no-margin ion-no-padding">
-        <ion-col class="ion-no-margin ion-no-padding" size="9">
-          <h1>Padel Fixture </h1>
-          <p>{{mail_usuario}}</p>
+<div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button auto-hide="false"></ion-menu-button>
+      </ion-buttons>
+
+      <ion-title>Padel Fixture</ion-title>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="onLogout()"> Logout </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <!-- <div class="hero" style="background-image: url('/assets/img/galan.jpg'); "> </div> -->
+    <img class="imagen_principal_menu" src="assets/imagenes/LogoPF.jpeg" />
+
+    <br /><br /><br />
+    <div class="header ion-padding">
+      <ion-grid>
+        <ion-row class="ion-no-margin ion-no-padding">
+          <ion-col class="ion-no-margin ion-no-padding" size="9">
+            <h1>Padel Fixture</h1>
+            <p>{{mail_usuario}}</p>
+          </ion-col>
+          <ion-col size="3">
+            <div class="follow-banner">Menu</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <ion-grid class="action-panel">
+      <ion-row>
+        <ion-col>
+          <ion-icon
+            color="secondary"
+            size="large"
+            [routerLink]="['/buscar-torneos']"
+            name="search-outline"
+          ></ion-icon>
+          <p>Buscar torneo</p>
         </ion-col>
-        <ion-col size="3">
-          <div class="follow-banner">Menu </div>
+        <ion-col>
+          <ion-icon
+            color="secondary"
+            size="large"
+            [routerLink]="['/perfil-club']"
+            name="folder-open-outline"
+          ></ion-icon>
+          <p>Mis torneos</p>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-margin-top">
+        <ion-col>
+          <ion-icon
+            color="secondary"
+            size="large"
+            [routerLink]="['/mis-torneos']"
+            name="storefront-outline"
+          ></ion-icon>
+          <p>Tiendas</p>
+        </ion-col>
+        <ion-col>
+          <ion-icon
+            color="secondary"
+            size="large"
+            [routerLink]="['/mis-americanos']"
+            name="person-outline"
+          ></ion-icon>
+          <p>Perfil</p>
+        </ion-col>
+        <ion-col>
+          <ion-icon
+            color="secondary"
+            size="large"
+            name="ribbon-outline"
+          ></ion-icon>
+          <p>Ranking</p>
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
-
-  <ion-grid class="action-panel">
-    <ion-row>
-      <ion-col>
-        <ion-icon color="secondary" size="large"  [routerLink]="['/buscar-torneos']" name="search-outline"></ion-icon>
-        <p>Buscar torneo</p>
-      </ion-col>
-      <ion-col>
-        <ion-icon color="secondary" size="large"  [routerLink]="['/perfil-club']"  name="folder-open-outline"></ion-icon>
-        <p>Mis torneos </p>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-margin-top">
-      <ion-col>
-        <ion-icon color="secondary" size="large"  [routerLink]="['/mis-torneos']" name="storefront-outline"></ion-icon>
-        <p>Tiendas</p>
-      </ion-col>
-      <ion-col>
-        <ion-icon color="secondary" size="large"   [routerLink]="['/mis-americanos']" name="person-outline"></ion-icon>
-        <p>Perfil</p>
-      </ion-col>
-      <ion-col>
-        <ion-icon color="secondary" size="large"  name="ribbon-outline"></ion-icon>
-        <p>Ranking  </p>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-
-
-</ion-content>
+  </ion-content>
+</div>

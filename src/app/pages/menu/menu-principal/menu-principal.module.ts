@@ -14,8 +14,10 @@ import { MenuPrincipalPage } from './menu-principal.page';
     FormsModule,
     IonicModule,
     MenuPrincipalPageRoutingModule,
-    
+
   ],
-  declarations: [MenuPrincipalPage]
+  declarations: [
+    MenuPrincipalPage,
+  ]
 })
 export class MenuPrincipalPageModule {}
