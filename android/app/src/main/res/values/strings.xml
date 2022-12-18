@@ -4,4 +4,5 @@
     <string name="title_activity_main">PadelFixtureUser</string>
     <string name="package_name">io.ionic.starter</string>
     <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="server_client_id">1006375555592-7m7u91rjfivks60j80oo4jg0o89hng33.apps.googleusercontent.com</string>
 </resources>
