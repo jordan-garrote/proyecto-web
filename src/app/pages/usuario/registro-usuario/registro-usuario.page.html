@@ -15,51 +15,117 @@
     </ion-list-header>
     
     <ion-item>
-      <ion-label>Nombre</ion-label>
-      <ion-input type="text" 
+      <ion-label>Nombre apellido: </ion-label>
+      <ion-input type="name" 
                  placeholder="Completar"
                  name="nombre"
-                 [(ngModel)]="usuario_registro.nombre"
+                 [(ngModel)]="usuario_registro.nombre_apellido"
                  required>
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label>Apellido</ion-label>
+      <ion-label>Fecha de Nacimiento </ion-label>
+      <ion-button (click)="presentAlertTimeVreacionDeTorneo()">
+      <ion-icon slot="icon-only" name="time-outline"></ion-icon>
+      </ion-button>
+
+
       <ion-input type="text" 
                  placeholder="Completar"
-                 name="apellido"
-                 [(ngModel)]="usuario_registro.apellido"
+                 name="cumpleanos"
+                 [(ngModel)]="usuario_registro.fecha_nacimiento"
                  required>
       </ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Edad</ion-label>
-      <ion-input type="text" 
-                 placeholder="Completar"
-                 name="edad"
-                 [(ngModel)]="usuario_registro.edad"
-                 required>
-      </ion-input>
+
+
+
+    <ion-item lines="none">
+      <ion-label>Categoria</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selCategoria($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
+      </ion-select>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Ciudad</ion-label>
-      <ion-input type="text" 
-                 placeholder="Completar"
-                 name="ciudad"
-                 [(ngModel)]="usuario_registro.ciudad"
-                 required>
-      </ion-input>
+
+
+
+
+    <ion-item lines="none">
+      <ion-label>Nacionalidad</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selNacionalidad($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeNacionalidad of arrayTipoDeNacionalidad" [value]="FarrayTipoDeNacionalidad.id" >{{FarrayTipoDeNacionalidad.descripcion}}</ion-select-option>
+      </ion-select>
     </ion-item>
 
+
+
+
+    <ion-item lines="none">
+      <ion-label>Lado</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selLado($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let farrayTipoDeLado of arrayTipoDeLado" [value]="farrayTipoDeLado.id" >{{farrayTipoDeLado.descripcion}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+
+
+
+    <ion-item lines="none">
+      <ion-label>Talla</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selTalla($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let farrayTipoDeTalla of arrayTipoDeTalla" [value]="farrayTipoDeTalla.id" >{{farrayTipoDeTalla.descripcion}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+
+
+
+    <ion-item lines="none">
+      <ion-label>Genero</ion-label>
+    </ion-item>
+    <ion-item margin-top >
+      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selGenero($event)">
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option *ngFor="let FarrayTipoDeGenero of arrayTipoDeGenero" [value]="FarrayTipoDeGenero.id" >{{FarrayTipoDeGenero.descripcion}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+
+
+
     <ion-item>
-      <ion-label>Fono</ion-label>
+      <ion-label>Instagram:</ion-label>
       <ion-input type="tel" 
                  placeholder="Completar"
                  name="fono"
-                 [(ngModel)]="usuario_registro.fono"
+                 [(ngModel)]="usuario_registro.instagram"
+                 required>
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>WhatsApp:</ion-label>
+      <ion-input type="tel" 
+                 placeholder="Completar"
+                 name="fono"
+                 [(ngModel)]="usuario_registro.whatsApp"
                  required>
       </ion-input>
     </ion-item>
@@ -69,7 +135,7 @@
       <ion-input type="email" 
                  placeholder="Completar Email"
                  name="email"
-                 [(ngModel)]="usuario_registro.email"
+                 [(ngModel)]="usuario_registro.mail"
                  pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
                  required></ion-input>
     </ion-item>
@@ -91,7 +157,7 @@
                 (click)="btn_guardar_usuario()" 
                 expand="block"
                 shape="round">
-      Login
+      Guardar
     </ion-button>
     
   
@@ -115,7 +181,7 @@
         </ion-col>
 
         <ion-col size="6">
-          <ion-button color="secondary" size="large" >Guardar</ion-button>
+          <ion-button color="secondary" size="large" (click)="btn_guardar_usuario()" >Crear</ion-button>
         </ion-col>
 
       </ion-row>
