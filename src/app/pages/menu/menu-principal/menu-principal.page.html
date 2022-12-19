@@ -10,9 +10,9 @@
         *ngFor="let item of menuList; let i = index"
         [attr.data-index]="i"
         (click)="goTo(item.value)"
-    >
-      {{ item.text }}
-    </ion-item>
+      >
+        {{ item.text }}
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -33,16 +33,16 @@
   </ion-header>
 
   <ion-content>
-    <!-- <div class="hero" style="background-image: url('/assets/img/galan.jpg'); "> </div> -->
-    <img class="imagen_principal_menu" src="assets/imagenes/LogoPF.jpeg" />
+    <div class="imagen_principal_menu_container">
+      <img class="imagen_principal_menu" src="assets/imagenes/LogoPF.jpeg" />
+    </div>
 
-    <br /><br /><br />
     <div class="header ion-padding">
       <ion-grid>
         <ion-row class="ion-no-margin ion-no-padding">
-          <ion-col class="ion-no-margin ion-no-padding" size="9">
+          <ion-col class="ion-no-margin ion-no-padding follow-title" size="9">
             <h1>Padel Fixture</h1>
-            <p>{{mail_usuario}}</p>
+            <p>{{user.email}}</p>
           </ion-col>
           <ion-col size="3">
             <div class="follow-banner">Menu</div>
@@ -52,7 +52,7 @@
     </div>
 
     <ion-grid class="action-panel">
-      <ion-row>
+      <ion-row class="ion-justify-content-center ion-align-items-center">
         <ion-col>
           <ion-icon
             color="secondary"

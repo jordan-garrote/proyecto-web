@@ -16,6 +16,8 @@ export class MenuPrincipalPage implements OnInit {
     { text: 'Selección Buscar Torneo', value: 'seleccion-buscar-torneo' },
     { text: 'Inscripción Torneos', value: 'inscripcion-torneos' },
   ]
+
+  user: any = JSON.parse(localStorage.getItem('userLogged'))
   constructor(
     private route: ActivatedRoute,
     public navCtrl: NavController,
