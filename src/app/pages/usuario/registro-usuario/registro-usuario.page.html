@@ -1,192 +1,231 @@
 <!-- <app-heder-basico titulo="Perfil Club"> </app-heder-basico> -->
 
-<ion-content class="ion-padding colorFondo" fullscreen >
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="auto">
+        <img width="80" class="" src="assets/imagenes/logo-padel-fixture.png" />
+      </ion-col>
+      <ion-col class="page-title">Registrar Usuario</ion-col>
+    </ion-row>
+  </ion-grid>
 
-
-  <img  class="image-container " src="assets/imagenes/LogoPF.jpeg" >
-
-  <br><br>
-
-
-  <form #formulario="ngForm">
-
-    <ion-list-header>
+  <form #formulario="ngForm" class="form-registro">
+    <!-- <ion-list-header>
       <ion-label>Formulario valido: {{formulario.valid}} </ion-label>
-    </ion-list-header>
-    
-    <ion-item>
-      <ion-label>Nombre apellido: </ion-label>
-      <ion-input type="name" 
-                 placeholder="Completar"
-                 name="nombre"
-                 [(ngModel)]="usuario_registro.nombre_apellido"
-                 required>
+    </ion-list-header> -->
+
+    <ion-item class="item">
+      <ion-icon name="person-outline" color="primary"></ion-icon>
+      <ion-input
+        type="name"
+        name="nombre"
+        color="secondary"
+        placeholder="Nombre apellido"
+        [(ngModel)]="usuario_registro.nombre_apellido"
+        class="asd"
+        required
+      >
       </ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Fecha de Nacimiento </ion-label>
+    <ion-item class="item">
+      <ion-icon name="calendar-outline" color="primary"></ion-icon>
+      <ion-input
+        type="text"
+        name="cumpleanos"
+        color="secondary"
+        placeholder="Fecha de Nacimiento"
+        [(ngModel)]="usuario_registro.fecha_nacimiento"
+        required
+      >
+      </ion-input>
       <ion-button (click)="presentAlertTimeVreacionDeTorneo()">
-      <ion-icon slot="icon-only" name="time-outline"></ion-icon>
+        <ion-icon slot="icon-only" name="chevron-down-outline"></ion-icon>
       </ion-button>
+    </ion-item>
+    <ion-item class="item">
+      <ion-icon name="calendar-outline" color="primary"></ion-icon>
+      <ion-label color="secondary">Fecha de nacimiento</ion-label>
+      <ion-datetime-button datetime="datetime">Fecha de nacimiento</ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime id="datetime" color="secondary"></ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
 
+    <ion-item class="item" lines="none">
+      <ion-icon name="man-outline" class="icon-person" color="primary"></ion-icon>
+      <ion-icon name="woman-outline" class="icon-person" color="primary"></ion-icon>
+      <ion-label color="secondary">Categoria</ion-label>
+      <ion-select
+        value="Seleccionar"
+        placeholder="Categoría"
+        okText="Ok"
+        cancelText="Cancelar"
+        class="ion-text-left"
+        (ionChange)="selCategoria($event)"
+      >
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option
+          *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria"
+          [value]="FarrayTipoDeCategoria.id"
+          >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
 
-      <ion-input type="text" 
-                 placeholder="Completar"
-                 name="cumpleanos"
-                 [(ngModel)]="usuario_registro.fecha_nacimiento"
-                 required>
+    <ion-item class="item" lines="none">
+      <ion-icon name="globe-outline" color="primary"></ion-icon>
+      <ion-label color="secondary">Nacionalidad</ion-label>
+      <ion-select
+        value="Seleccionar"
+        okText="Ok"
+        cancelText="Cancelar"
+        class="ion-text-left"
+        (ionChange)="selNacionalidad($event)"
+      >
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option
+          *ngFor="let FarrayTipoDeNacionalidad of arrayTipoDeNacionalidad"
+          [value]="FarrayTipoDeNacionalidad.id"
+          >{{FarrayTipoDeNacionalidad.descripcion}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item class="item" lines="none">
+      <ion-icon name="code-outline" color="primary"></ion-icon>
+      <ion-label color="secondary">Lado</ion-label>
+      <ion-select
+        value="Seleccionar"
+        okText="Ok"
+        cancelText="Cancelar"
+        class="ion-text-left"
+        (ionChange)="selLado($event)"
+      >
+        <ion-select-option color="secondary">Seleccionar</ion-select-option>
+        <ion-select-option
+          color="secondary"
+          *ngFor="let farrayTipoDeLado of arrayTipoDeLado"
+          [value]="farrayTipoDeLado.id"
+          >{{farrayTipoDeLado.descripcion}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item" lines="none">
+      <ion-icon name="resize-outline" color="primary"></ion-icon>
+      <ion-label color="secondary">Talla</ion-label>
+      <ion-select
+        value="Seleccionar"
+        okText="Ok"
+        cancelText="Cancelar"
+        class="ion-text-left"
+        (ionChange)="selTalla($event)"
+      >
+        <ion-select-option>Seleccionar</ion-select-option>
+        <ion-select-option
+          *ngFor="let farrayTipoDeTalla of arrayTipoDeTalla"
+          [value]="farrayTipoDeTalla.id"
+          >{{farrayTipoDeTalla.descripcion}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="item" lines="none">
+      <ion-icon name="man-outline" class="icon-person" color="primary"></ion-icon>
+      <ion-icon name="woman-outline" class="icon-person" color="primary"></ion-icon>
+      <!-- <ion-icon name="transgender-outline"></ion-icon> -->
+      <ion-label color="secondary">Género</ion-label>
+      <ion-select
+        value="Seleccionar"
+        okText="Ok"
+        cancelText="Cancelar"
+        class="ion-text-left"
+        (ionChange)="selGenero($event)"
+      >
+        <ion-select-option color="secondary">Seleccionar</ion-select-option>
+        <ion-select-option
+          color="secondary"
+          *ngFor="let FarrayTipoDeGenero of arrayTipoDeGenero"
+          [value]="FarrayTipoDeGenero.id"
+          >{{FarrayTipoDeGenero.descripcion}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item class="item">
+      <ion-icon name="logo-instagram" color="primary"></ion-icon>
+      <ion-input
+        type="tel"
+        placeholder="Instagram"
+        color="secondary"
+        name="fono"
+        [(ngModel)]="usuario_registro.instagram"
+        required
+      >
       </ion-input>
     </ion-item>
 
-
-
-
-    <ion-item lines="none">
-      <ion-label>Categoria</ion-label>
-    </ion-item>
-    <ion-item margin-top >
-      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selCategoria($event)">
-        <ion-select-option>Seleccionar</ion-select-option>
-        <ion-select-option *ngFor="let FarrayTipoDeCategoria of arrayTipoDeCategoria" [value]="FarrayTipoDeCategoria.id" >{{FarrayTipoDeCategoria.nombre_2}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-
-
-
-
-    <ion-item lines="none">
-      <ion-label>Nacionalidad</ion-label>
-    </ion-item>
-    <ion-item margin-top >
-      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selNacionalidad($event)">
-        <ion-select-option>Seleccionar</ion-select-option>
-        <ion-select-option *ngFor="let FarrayTipoDeNacionalidad of arrayTipoDeNacionalidad" [value]="FarrayTipoDeNacionalidad.id" >{{FarrayTipoDeNacionalidad.descripcion}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-
-
-
-    <ion-item lines="none">
-      <ion-label>Lado</ion-label>
-    </ion-item>
-    <ion-item margin-top >
-      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selLado($event)">
-        <ion-select-option>Seleccionar</ion-select-option>
-        <ion-select-option *ngFor="let farrayTipoDeLado of arrayTipoDeLado" [value]="farrayTipoDeLado.id" >{{farrayTipoDeLado.descripcion}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-
-
-
-
-    <ion-item lines="none">
-      <ion-label>Talla</ion-label>
-    </ion-item>
-    <ion-item margin-top >
-      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selTalla($event)">
-        <ion-select-option>Seleccionar</ion-select-option>
-        <ion-select-option *ngFor="let farrayTipoDeTalla of arrayTipoDeTalla" [value]="farrayTipoDeTalla.id" >{{farrayTipoDeTalla.descripcion}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-
-
-
-
-    <ion-item lines="none">
-      <ion-label>Genero</ion-label>
-    </ion-item>
-    <ion-item margin-top >
-      <ion-select value="Seleccionar" okText="Ok" cancelText="Cancelar" class="ion-text-left"     (ionChange)="selGenero($event)">
-        <ion-select-option>Seleccionar</ion-select-option>
-        <ion-select-option *ngFor="let FarrayTipoDeGenero of arrayTipoDeGenero" [value]="FarrayTipoDeGenero.id" >{{FarrayTipoDeGenero.descripcion}}</ion-select-option>
-      </ion-select>
-    </ion-item>
-
-
-
-
-    <ion-item>
-      <ion-label>Instagram:</ion-label>
-      <ion-input type="tel" 
-                 placeholder="Completar"
-                 name="fono"
-                 [(ngModel)]="usuario_registro.instagram"
-                 required>
+    <ion-item class="item">
+      <ion-icon name="logo-whatsapp" color="primary"></ion-icon>
+      <ion-input
+        type="tel"
+        placeholder="WhatsApp"
+        color="secondary"
+        name="fono"
+        [(ngModel)]="usuario_registro.whatsApp"
+        required
+      >
       </ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>WhatsApp:</ion-label>
-      <ion-input type="tel" 
-                 placeholder="Completar"
-                 name="fono"
-                 [(ngModel)]="usuario_registro.whatsApp"
-                 required>
-      </ion-input>
+    <ion-item class="item">
+      <ion-icon name="mail-outline" color="primary"></ion-icon>
+      <ion-input
+        type="email"
+        placeholder="Email"
+        name="email"
+        color="secondary"
+        [(ngModel)]="usuario_registro.mail"
+        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        required
+      ></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Email:</ion-label>
-      <ion-input type="email" 
-                 placeholder="Completar Email"
-                 name="email"
-                 [(ngModel)]="usuario_registro.mail"
-                 pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-                 required></ion-input>
+    <ion-item class="item">
+      <ion-icon name="lock-closed-outline" color="primary"></ion-icon>
+      <ion-input
+        type="password"
+        name="password"
+        color="secondary"
+        placeholder="Contraseña"
+        [(ngModel)]="usuario_registro.contrasena"
+        required
+      ></ion-input>
     </ion-item>
 
-    <ion-item>
-      <ion-label>Password:</ion-label>
-      <ion-input type="password" 
-                 name="password"
-                 placeholder="Completar Password"
-                 [(ngModel)]="usuario_registro.contrasena"
-                 required></ion-input>
-    </ion-item>
-
-    
-    
-    <br>
-    <ion-button type="submit"
-                [disabled]="formulario.invalid"
-                (click)="btn_guardar_usuario()" 
-                expand="block"
-                shape="round">
+    <br />
+    <ion-button
+      type="submit"
+      [disabled]="formulario.invalid"
+      (click)="btn_guardar_usuario()"
+      expand="block"
+      color="secondary"
+    >
       Guardar
     </ion-button>
-    
-  
-  
-    </form>
-
-
-
-
-
-
-
-
-
-  <ion-item  lines="none">
-    <ion-grid fixed>
-      <ion-row>
-
-        <ion-col size="6">
-          <ion-button color="secondary" [routerLink]="['/login']" size="large">Volver</ion-button>
-        </ion-col>
-
-        <ion-col size="6">
-          <ion-button color="secondary" size="large" (click)="btn_guardar_usuario()" >Crear</ion-button>
-        </ion-col>
-
-      </ion-row>
-    </ion-grid>
-  </ion-item>
-
-
+  </form>
+  <div style="text-align: center">
+    <ion-button
+      color="secondary"
+      fill="outline"
+      size="large"
+      [routerLink]="['/login']"
+      >Volver</ion-button
+    >
+    <ion-button color="secondary" size="large" (click)="btn_guardar_usuario()"
+      >Crear</ion-button
+    >
+  </div>
 </ion-content>

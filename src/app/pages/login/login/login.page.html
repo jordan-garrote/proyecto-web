@@ -1,87 +1,77 @@
 <ion-content class="ion-padding">
-  <ion-card>
-    <img class="itran" src="assets/imagenes/LogoPF.jpeg" />
+  <ion-card class="container-logo">
+    <img class="logo" src="assets/imagenes/logo-padel-fixture.png" />
   </ion-card>
 
-  <ion-item lines="none">
-    <ion-label>Ingresar usuario</ion-label>
+  <ion-item lines="none" class="ctn-title">
+    <ion-label class="title">Ingresar usuario</ion-label>
   </ion-item>
 
-  <form #formulario="ngForm">
-    <ion-list-header>
+  <form #formulario="ngForm" style="padding:20px;" class="form-login">
+    <!-- <ion-list-header>
       <ion-label>Formulario valido: {{formulario.valid}} </ion-label>
-    </ion-list-header>
+    </ion-list-header> -->
 
-    <ion-item>
-      <ion-label>Email:</ion-label>
+      <!-- 
+[(ngModel)]="usuario.email"
+          pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+        [(ngModel)]="usuario.contrasena_usuario" -->
+        <!-- <ion-list >
+					<ion-item class="custom" shape="round">
+					  <ion-label color="primary" position="floating">Name</ion-label>
+					  <ion-input autocorrect="on" autofocus="on" clearInput="true" clearOnEdit="true"  color="primary" inputmode="text" placeholder="Enter your name" required="true"></ion-input>
+					  <ion-icon name="mail" color="primary" slot="end"></ion-icon>
+					</ion-item>
+				</ion-list> -->
       <ion-input
         type="email"
+        placeholder="Email"
+        class="custom"
+        required
         placeholder="Completar Email"
         name="email"
-        [(ngModel)]="usuario.email"
-        pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
-        required
       ></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Password:</ion-label>
       <ion-input
         type="password"
-        name="password"
-        placeholder="Completar Password"
-        [(ngModel)]="usuario.contrasena_usuario"
+        placeholder="Contraseña"
+        class="custom"
         required
       ></ion-input>
-    </ion-item>
 
-    <br /><br />
-    <ion-button
-      [disabled]="formulario.invalid"
-      (click)="onSingIn()"
-      expand="block"
-      shape="round"
-    >
-      Login
-    </ion-button>
+      <ion-button
+        [disabled]="formulario.invalid"
+        (click)="onSingIn()"
+        expand="block"
+        color="secondary"
+        fill="outline"
+        >Iniciar Sesión</ion-button
+      >
 
-    <ion-button
-      (click)="onSingInGoogle()"
-      expand="block"
-      shape="round"
+      <ion-button
+        expand="block"
+        [routerLink]="['/registro-usuario']"
+        color="secondary"
+        >Registrarme</ion-button
+      >
+
+      <ion-button color="secondary" shape="round">
+        <ion-icon
+          slot="icon-only"
+          (click)="onSingInGoogle()"
+          name="logo-google"
+        ></ion-icon>
+      </ion-button>
+      <br>
+      <ion-button
+      class="top-button ion-margin-top lblArriba"
+      size="small"
+      [routerLink]="['/recuperar-clave']"
+      fill="outline"
+      color="tertiary"
     >
-      Iniciar con
-      <ion-icon class="ion-margin-start" name="logo-google"></ion-icon>
+      <ion-icon name="create-outline"></ion-icon>
+      ¿Recuperar clave?
     </ion-button>
   </form>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col size="5">
-        <ion-button
-          class="top-button ion-margin-top lblArriba"
-          size="small"
-          [routerLink]="['/registro-usuario']"
-          fill="outline"
-          color="tertiary"
-        >
-          <ion-icon name="create-outline"></ion-icon>
-          Registrar
-        </ion-button>
-      </ion-col>
-
-      <ion-col size="7">
-        <ion-button
-          class="top-button ion-margin-top lblArriba"
-          size="small"
-          [routerLink]="['/recuperar-clave']"
-          fill="outline"
-          color="tertiary"
-        >
-          <ion-icon name="create-outline"></ion-icon>
-          ¿Recuperar clave?
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 </ion-content>
