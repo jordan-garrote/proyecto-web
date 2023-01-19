@@ -4,7 +4,7 @@
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-content class="ion-padding">
+  <ion-content   class="ion-padding">
     <ion-list>
       <ion-item
         *ngFor="let item of menuList; let i = index"
@@ -17,7 +17,7 @@
   </ion-content>
 </ion-menu>
 
-<div class="ion-page" id="main-content">
+<div class="ion-page"  id="main-content">
   <ion-header>
     <ion-toolbar color="primary">
       <ion-buttons slot="start">
@@ -34,18 +34,18 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content>
-    <ion-item class="avatar">
-      <ion-avatar slot="start">
-        <img alt="Silhouette of a person's head" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+  <ion-content >
+    <ion-item lines="none" class="avatar">
+      <ion-avatar slot="start" class="ion-avatar">
+        <img alt="Silhouette of a person's head" color="red" fill="blue" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
       </ion-avatar>
-      <ion-label expand="full">
+      <ion-label class="ion-label"  expand="full">
         Avatar 
       </ion-label>
       <br>
-      <ion-label>{{user.email}}</ion-label>
+      <ion-label class="ion-label">{{user.email}}</ion-label>
     </ion-item>
-    <ion-grid>
+    <ion-grid style="background-color: #F0F6FF; height:100%; padding:20px; margin:0;" >
       <ion-row>
         <ion-col class="items-menu">
           <ion-icon
@@ -53,13 +53,13 @@
           [routerLink]="['/buscar-torneos']"
           name="search-outline"
         ></ion-icon>
-        <p>Buscar torneo</p>
+        <p style="margin: 0;">Buscar torneo</p>
         </ion-col>
         <ion-col class="items-menu">
           <ion-icon size="large"
           [routerLink]="['/perfil-club']" 
           name="tennisball-outline"></ion-icon>
-          <p>Mis torneos</p>
+          <p style="margin: 0;">Mis torneos</p>
         </ion-col>
       </ion-row>
       <ion-row>
@@ -69,7 +69,7 @@
             [routerLink]="['/mis-torneos']"
             name="storefront-outline"
           ></ion-icon>
-          <p>Tiendas</p>
+          <p style="margin: 0;">Tiendas</p>
         </ion-col>
         <ion-col class="items-menu">
           <ion-icon
@@ -77,7 +77,7 @@
             [routerLink]="['/mis-americanos']"
             name="person-outline"
           ></ion-icon>
-          <p>Perfil</p>
+          <p style="margin: 0;">Perfil</p>
         </ion-col>
       </ion-row>
       <ion-row class="">
@@ -87,7 +87,7 @@
             size="large"
             name="trophy-outline"
           ></ion-icon>
-          <p>Ranking</p>
+          <p style="margin: 0;">Ranking</p>
         </ion-col>
       </ion-row>
     </ion-grid>
